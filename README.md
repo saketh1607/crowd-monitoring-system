@@ -9,7 +9,7 @@ Your Emergency Management System is now **FULLY OPERATIONAL** and ready to prote
 ## 🌐 **System Access Points**
 
 ### **1. Web Dashboard (Recommended for Beginners)**
-- **URL**: `file:///c:/Users/bhanu/OneDrive/Desktop/LARGE%20EVENTS%20MONITORING/web_dashboard.html`
+- **URL**: `file:///c:/Users/user-name/OneDrive/Desktop/LARGE%20EVENTS%20MONITORING/web_dashboard.html`
 - **Features**: Visual interface, one-click testing, real-time monitoring
 - **Best for**: Quick testing, monitoring, demonstrations
 
