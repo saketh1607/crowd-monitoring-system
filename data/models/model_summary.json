@@ -1,0 +1,47 @@
+{
+  "training_date": "2025-08-01T17:58:16.242678",
+  "model_type": "mock_models_for_testing",
+  "models": {
+    "fire_detection": {
+      "type": "neural_network",
+      "accuracy": 0.85,
+      "file": "fire_detection_model.h5",
+      "scaler": "fire_scaler.pkl"
+    },
+    "crowd_density": {
+      "type": "neural_network",
+      "accuracy": 0.82,
+      "file": "crowd_density_model.h5",
+      "scaler": "crowd_scaler.pkl"
+    },
+    "behavior_analysis": {
+      "type": "random_forest",
+      "accuracy": 0.78,
+      "files": [
+        "behavior_analysis_model.pkl",
+        "behavior_label_encoder.pkl",
+        "behavior_scaler.pkl"
+      ]
+    },
+    "anomaly_detection": {
+      "type": "isolation_forest",
+      "sensor_types": [
+        "temperature",
+        "humidity",
+        "sound",
+        "motion"
+      ],
+      "files": [
+        "temperature_anomaly_model.pkl",
+        "temperature_scaler.pkl",
+        "humidity_anomaly_model.pkl",
+        "humidity_scaler.pkl",
+        "sound_anomaly_model.pkl",
+        "sound_scaler.pkl",
+        "motion_anomaly_model.pkl",
+        "motion_scaler.pkl"
+      ]
+    }
+  },
+  "note": "These are mock models for testing. Replace with real trained models from Google Colab."
+}

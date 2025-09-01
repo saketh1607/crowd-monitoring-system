@@ -1,0 +1,71 @@
+{
+  "webcam_main": {
+    "name": "Main Webcam",
+    "source": 0,
+    "type": "webcam",
+    "location": {
+      "x": 100.0,
+      "y": 200.0
+    },
+    "area_sqm": 50.0,
+    "enabled": true,
+    "detection_types": [
+      "fire",
+      "crowd"
+    ],
+    "settings": {
+      "resolution": [
+        640,
+        480
+      ],
+      "fps": 30,
+      "detection_interval": 2.0
+    }
+  },
+  "entrance_cam": {
+    "name": "Entrance Camera",
+    "source": "http://192.168.1.100:8080/video",
+    "type": "ip_camera",
+    "location": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "area_sqm": 100.0,
+    "enabled": false,
+    "detection_types": [
+      "crowd",
+      "behavior"
+    ],
+    "settings": {
+      "resolution": [
+        1280,
+        720
+      ],
+      "fps": 15,
+      "detection_interval": 3.0
+    }
+  },
+  "stage_cam": {
+    "name": "Main Stage Camera",
+    "source": "http://192.168.1.101:8080/video",
+    "type": "ip_camera",
+    "location": {
+      "x": 500.0,
+      "y": 300.0
+    },
+    "area_sqm": 200.0,
+    "enabled": false,
+    "detection_types": [
+      "fire",
+      "crowd"
+    ],
+    "settings": {
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 10,
+      "detection_interval": 1.0
+    }
+  }
+}

@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15
+    container_name: emergency_db
+    environment:
+      POSTGRES_DB: emergency_db
+      POSTGRES_USER: emergency_user
+      POSTGRES_PASSWORD: emergency_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - emergency_network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: emergency_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - emergency_network
+
+  # Emergency Management API
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: emergency_api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://emergency_user:emergency_pass@postgres:5432/emergency_db
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./data/models:/app/data/models
+      - ./logs:/app/logs
+    networks:
+      - emergency_network
+    restart: unless-stopped
+
+  # Dashboard Frontend
+  dashboard:
+    build:
+      context: ./src/dashboard
+      dockerfile: Dockerfile
+    container_name: emergency_dashboard
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+      - REACT_APP_WS_URL=ws://localhost:8000
+    depends_on:
+      - api
+    networks:
+      - emergency_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  emergency_network:
+    driver: bridge
